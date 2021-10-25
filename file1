@@ -3,36 +3,75 @@ using System;
 class Employees{
 	public string name;
 	public int age;
-	public string specialty;
-	public string task;
-	public string work_experience;
+  public string work_experience;
+ 
+  
 
-	public Employees(string name, int age, string specialty, string task, string work_experience){
+	public Employees(string name, int age, string work_experience){
 	 this.name = name;
 	 this.age = age;
-	 this.specialty = specialty;
-	 this.task = task;
-	 this.work_experience = work_experience;
+   this.work_experience = work_experience;
 	}
 
-    public void PrintInfo() {
-		Console.WriteLine($"{name},{age} лет - {specialty}\nЗадача:{task}\nОпыт работы:{work_experience}");
+   public virtual void Info() {
+		Console.WriteLine($"{name},{age} лет\n Опыт работы: {work_experience}");
 		
 	}
 }
 
+class Teachers : Employees {
+  public string school;
+
+  public Teachers(string name, int age, string work_experience, string school) : base(name, age, work_experience) {
+    this.school = school;
+  }
+
+  public override void Info() {
+    Console.WriteLine("Работники школы:");
+    Console.WriteLine($"ФИО: {name}\nВозраст: {age}\nОпыт работы: {work_experience}");
+    Console.WriteLine($"Школа: {school}\n");
+  }
+}
+
+class Doctors : Employees {
+  public string hospital;
+
+  public Doctors(string name, int age, string work_experience, string hospital) : base(name, age, work_experience) {
+    this.hospital = hospital;
+  }
+
+  public override void Info() {
+    Console.WriteLine("Работники больницы:");
+    Console.WriteLine($"ФИО: {name}\n" + 
+                      $"Возраст: {age}\n" + 
+                      $"Опыт работы: ${work_experience}");
+    Console.WriteLine($"Больница: {hospital}\n");
+  }
+}
+
+class Waiters : Employees {
+  public string restaurant;
+
+  public Waiters(string name, int age, string work_experience, string restaurant) : base(name, age, work_experience) {
+    this.restaurant = restaurant;
+  }
+
+  public override void Info() {
+    Console.WriteLine("Работники ресторана:");
+    Console.WriteLine($"ФИО: {name}\n" + 
+                      $"Возраст: {age}\n" + 
+                      $"Опыт работы: ${work_experience}");
+    Console.WriteLine($"Ресторан: {restaurant}\n");
+  }
+}
 
 class Program {
-   public static void Main(string[] args) {
-	   Employees employee1 = new Employees("Умаров Умар", 38, "электрик", "наладка, монтаж, эксплуатация бытового электрообородувония и электронных систем управления","8 лет");
-	   Employees employee2 = new Employees("Магамадов Магомед",26, "программист", "поддержка ПО и помощь специалистам техподдержки в устранении ошибок", "6 лет");
-	   Employees employee3 = new Employees("Ахмадов Ахмед", 35, "бухгалтер", "Ведение бухгалтерских регистров, программ учета, отражение операций на счетах организации", "11 лет");
-
-	   employee1.PrintInfo();
-     Console.WriteLine();
-	   employee2.PrintInfo();
-     Console.WriteLine();
-	   employee3.PrintInfo();
-	   
-    }
+  public static void Main (string[] args) {
+    Teachers employee1 = new Teachers("Ибрагимова Аза Абдулбековна", 25, "6 лет", "МБОУ СОШ№3 с.Автуры");
+    employee1.Info();
+    Doctors employee2 = new Doctors("Даудов Хасмагомед Халидович", 32, "12 лет", "Городская больница №9");
+    employee2.Info();
+    Waiters employee3 = new Waiters("{Хасиева Седа Руслановна", 21, "3 года", "Васаби");
+    employee3.Info();
+  }
 }
