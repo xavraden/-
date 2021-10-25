@@ -1,0 +1,38 @@
+using System;
+
+class Employees{
+	public string name;
+	public int age;
+	public string specialty;
+	public string task;
+	public string work_experience;
+
+	public Employees(string name, int age, string specialty, string task, string work_experience){
+	 this.name = name;
+	 this.age = age;
+	 this.specialty = specialty;
+	 this.task = task;
+	 this.work_experience = work_experience;
+	}
+
+    public void PrintInfo() {
+		Console.WriteLine($"{name},{age} лет - {specialty}\nЗадача:{task}\nОпыт работы:{work_experience}");
+		
+	}
+}
+
+
+class Program {
+   public static void Main(string[] args) {
+	   Employees employee1 = new Employees("Умаров Умар", 38, "электрик", "наладка, монтаж, эксплуатация бытового электрообородувония и электронных систем управления","8 лет");
+	   Employees employee2 = new Employees("Магамадов Магомед",26, "программист", "поддержка ПО и помощь специалистам техподдержки в устранении ошибок", "6 лет");
+	   Employees employee3 = new Employees("Ахмадов Ахмед", 35, "бухгалтер", "Ведение бухгалтерских регистров, программ учета, отражение операций на счетах организации", "11 лет");
+
+	   employee1.PrintInfo();
+     Console.WriteLine();
+	   employee2.PrintInfo();
+     Console.WriteLine();
+	   employee3.PrintInfo();
+	   
+    }
+}
